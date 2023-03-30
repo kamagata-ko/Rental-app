@@ -36,9 +36,4 @@ public class CustomerController {
 		return service.selectAll();
 	}
 
-	@GetMapping("test")
-	public String executeTest() {
-		return "実行されました。";
-	}
-
 }
