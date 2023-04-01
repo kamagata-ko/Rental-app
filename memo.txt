@@ -1,0 +1,35 @@
+
+Dockerを起動させる
+    docker-compose up -d
+    → DockerDesktopで起動していることを確認する。
+
+Docker のコンテナに入る。
+    docker container exec -it コンテナ名 bash
+
+コンテナ名はこれで調べる。
+    docker-compose ps
+
+
+Postgers が使える可動化を確認する
+    psql --version
+    → これでバージョンが出ない。
+
+
+psql -h ホスト名 -p ポート番号 -U ロール名 -d データベース名
+    psql -h localhost -p 5432 -U testUser -d testdb
+
+テーブル一覧を取得する方法
+    \dt
+
+psql を終了させる場合は以下を実行
+    \q
+
+
+
+
+
+
+
+
+
+

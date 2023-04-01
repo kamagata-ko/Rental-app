@@ -1,10 +1,10 @@
-package com.rentalapp.service;
+package com.rentalapp.domain.repository;
 
 import java.util.List;
 
 import com.rentalapp.model.CustomerModel;
 
-public interface CustomerService {
+public interface CustomerRepository {
 
 	public void insertCustomer(CustomerModel model);
 

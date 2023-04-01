@@ -1,16 +1,16 @@
-package com.rentalapp.service;
+package com.rentalapp.domain.repository;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import com.rentalapp.mapper.CustomerMapper;
 import com.rentalapp.model.CustomerModel;
 
-@Service
-public class CustomerServiceImpl implements CustomerService {
+@Repository
+public class CustomerRepositoryImpl implements CustomerRepository {
 
 	@Autowired
 	private CustomerMapper mapper;

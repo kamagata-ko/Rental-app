@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.rentalapp.domain.service.CustomerService;
 import com.rentalapp.model.CustomerModel;
-import com.rentalapp.service.CustomerService;
 
 @RestController
 @RequestMapping("api")
@@ -34,11 +34,6 @@ public class CustomerController {
 	@GetMapping(value = "/selectallcustomer")
 	public List<CustomerModel> selectAll() {
 		return service.selectAll();
-	}
-
-	@GetMapping("test")
-	public String executeTest() {
-		return "実行されました。";
 	}
 
 }
