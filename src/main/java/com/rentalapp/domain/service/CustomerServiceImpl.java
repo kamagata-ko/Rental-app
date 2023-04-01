@@ -1,4 +1,4 @@
-package com.rentalapp.service;
+package com.rentalapp.domain.service;
 
 import java.time.LocalDateTime;
 import java.util.List;

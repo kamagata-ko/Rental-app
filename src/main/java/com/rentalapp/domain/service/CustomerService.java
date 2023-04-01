@@ -1,4 +1,4 @@
-package com.rentalapp.service;
+package com.rentalapp.domain.service;
 
 import java.util.List;
 
