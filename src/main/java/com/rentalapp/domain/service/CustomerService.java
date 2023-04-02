@@ -12,4 +12,6 @@ public interface CustomerService {
 
 	public List<CustomerModel> selectAll();
 
+	public int update(CustomerModel model);
+
 }

@@ -12,4 +12,6 @@ public interface CustomerRepository {
 
 	public List<CustomerModel> selectAll();
 
+	public int updateByPrimaryKeySelective(CustomerModel model);
+
 }

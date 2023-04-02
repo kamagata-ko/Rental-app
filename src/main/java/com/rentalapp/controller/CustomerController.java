@@ -36,4 +36,9 @@ public class CustomerController {
 		return service.selectAll();
 	}
 
+	@PostMapping(value = "/updatecustomer")
+	public int update(CustomerModel model) {
+		return service.update(model);
+	}
+
 }

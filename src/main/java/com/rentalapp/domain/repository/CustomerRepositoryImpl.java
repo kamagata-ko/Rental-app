@@ -33,4 +33,11 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 		return mapper.selectAll();
 	}
 
+	@Override
+	public int updateByPrimaryKeySelective(CustomerModel model) {
+		LocalDateTime ldt = LocalDateTime.now();
+		model.setUpdateDate(ldt);
+		return mapper.updateByPrimaryKeySelective(model);
+	}
+
 }

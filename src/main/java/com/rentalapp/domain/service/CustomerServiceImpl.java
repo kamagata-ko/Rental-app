@@ -31,4 +31,9 @@ public class CustomerServiceImpl implements CustomerService {
 		return repository.selectAll();
 	}
 
+	@Override
+	public int update(CustomerModel model) {
+		return repository.updateByPrimaryKeySelective(model);
+	}
+
 }

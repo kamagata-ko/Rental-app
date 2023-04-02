@@ -15,6 +15,6 @@ public interface CustomerMapper {
 
 	public List<CustomerModel> selectAll();
 
-	public int updateserective(CustomerModel model);
+	public int updateByPrimaryKeySelective(CustomerModel model);
 
 }
