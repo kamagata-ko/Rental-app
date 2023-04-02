@@ -16,11 +16,11 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 	private CustomerMapper mapper;
 
 	@Override
-	public void insertCustomer(CustomerModel model) {
+	public int insertCustomer(CustomerModel model) {
 		LocalDateTime ldt = LocalDateTime.now();
 		model.setRegisterDate(ldt);
 		model.setUpdateDate(ldt);
-		mapper.insertCustomer(model);
+		return mapper.insertCustomer(model);
 	}
 
 	@Override

@@ -22,8 +22,8 @@ public class CustomerController {
 	private CustomerService service;
 
 	@PostMapping(value = "/insertcustomer", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void insertCustomer(@RequestBody CustomerModel model) {
-		service.insertCustomer(model);
+	public int insertCustomer(@RequestBody CustomerModel model) {
+		return service.insertCustomer(model);
 	}
 
 	@GetMapping(value = "/selectcustomer/{id}")

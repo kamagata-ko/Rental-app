@@ -17,8 +17,8 @@ public class CustomerServiceImpl implements CustomerService {
 	private CustomerRepository repository;
 
 	@Override
-	public void insertCustomer(CustomerModel model) {
-		repository.insertCustomer(model);
+	public int insertCustomer(CustomerModel model) {
+		return repository.insertCustomer(model);
 	}
 
 	@Override
