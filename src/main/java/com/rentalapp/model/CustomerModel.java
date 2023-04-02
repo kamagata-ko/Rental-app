@@ -1,19 +1,17 @@
 package com.rentalapp.model;
 
+import lombok.Data;
+
 import java.time.LocalDateTime;
 import java.util.Date;
 
-import lombok.Data;
-
 @Data
 public class CustomerModel {
-
-	String id;
-	String password;
-	String name;
-	int sex;
-	Date birthday;
-	LocalDateTime registerDate;
-	LocalDateTime updateDate;
-
+    private String id;
+    private String password;
+    private String name;
+    private int sex;
+    private Date birthday;
+    private LocalDateTime registerDate;
+    private LocalDateTime updateDate;
 }
