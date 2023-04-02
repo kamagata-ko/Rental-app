@@ -3,6 +3,9 @@ Dockerを起動させる
     docker-compose up -d
     → DockerDesktopで起動していることを確認する。
 
+Dockerを初期化する
+    docker-compose down
+
 Docker のコンテナに入る。
     docker container exec -it コンテナ名 bash
 
