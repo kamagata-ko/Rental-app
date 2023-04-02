@@ -22,8 +22,8 @@ public class CustomerController {
 	private CustomerService service;
 
 	@PostMapping(value = "/insertcustomer", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void insertCustomer(@RequestBody CustomerModel model) {
-		service.insertCustomer(model);
+	public int insertCustomer(@RequestBody CustomerModel model) {
+		return service.insertCustomer(model);
 	}
 
 	@GetMapping(value = "/selectcustomer/{id}")
@@ -34,6 +34,11 @@ public class CustomerController {
 	@GetMapping(value = "/selectallcustomer")
 	public List<CustomerModel> selectAll() {
 		return service.selectAll();
+	}
+
+	@PostMapping(value = "/updatecustomer")
+	public int update(CustomerModel model) {
+		return service.update(model);
 	}
 
 }

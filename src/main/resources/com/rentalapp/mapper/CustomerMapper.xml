@@ -31,4 +31,10 @@
 	<select id="selectAll" resultType="com.rentalapp.model.CustomerModel">
 		SELECT * FROM t_customer
 	</select>
+	<update id="updateByPrimaryKeySelective">
+		UPDATE t_customer SET
+			name = '試験 太郎'
+			,update_date = #{updateDate}
+		WHERE id = '00003';
+	</update>
 </mapper>

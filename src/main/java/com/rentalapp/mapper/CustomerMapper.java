@@ -9,10 +9,12 @@ import com.rentalapp.model.CustomerModel;
 @Mapper
 public interface CustomerMapper {
 
-	public void insertCustomer(CustomerModel model);
+	public int insertCustomer(CustomerModel model);
 
 	public CustomerModel selectOne(String id);
 
 	public List<CustomerModel> selectAll();
+
+	public int updateByPrimaryKeySelective(CustomerModel model);
 
 }
