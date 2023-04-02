@@ -1,17 +1,16 @@
 package com.rentalapp.domain.service;
 
-import java.util.List;
-
 import com.rentalapp.model.CustomerModel;
+
+import java.util.List;
 
 public interface CustomerService {
 
-	public int insertCustomer(CustomerModel model);
+    int insert(CustomerModel model);
 
-	public CustomerModel selectOne(String id);
+    CustomerModel selectOne(String id);
 
-	public List<CustomerModel> selectAll();
+    List<CustomerModel> selectAll();
 
-	public int update(CustomerModel model);
-
+    int update(CustomerModel model);
 }
