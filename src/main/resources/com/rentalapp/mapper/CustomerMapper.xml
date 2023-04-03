@@ -31,8 +31,8 @@
 	</select>
 	<update id="updateByPrimaryKeySelective">
 		UPDATE t_customer SET
-		name = '試験 太郎'
+		name = '更新 太郎'
 		,update_date = #{updateDate}
-		WHERE id = '00003';
+		WHERE id = '3';
 	</update>
 </mapper>
