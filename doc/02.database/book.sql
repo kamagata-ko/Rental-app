@@ -8,10 +8,10 @@ CREATE TABLE "t_book" (
 );
 
 CREATE TABLE "t_customer" (
-  "id" char PRIMARY KEY,
-  "password" varchar NOT NULL,
-  "name" varchar,
-  "sex" integer,
+  "id" serial PRIMARY KEY,
+  "password" varchar(10) NOT NULL,
+  "name" varchar(10),
+  "sex" integer CHECK (sex IN (1, 2, 3)),
   "birthday" date,
   "register_date" timestamp NOT NULL DEFAULT (now()),
   "update_date" timestamp

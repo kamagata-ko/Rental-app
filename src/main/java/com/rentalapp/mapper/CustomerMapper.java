@@ -1,19 +1,20 @@
 package com.rentalapp.mapper;
 
-import com.rentalapp.model.CustomerModel;
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
-import java.util.List;
+import com.rentalapp.model.CustomerModel;
 
 @Mapper
 public interface CustomerMapper {
 
-    int insert(CustomerModel model);
+	public int insert(CustomerModel model);
 
-    CustomerModel selectOne(String id);
+	public CustomerModel selectOne(String id);
 
-    List<CustomerModel> selectAll();
+	public List<CustomerModel> selectAll();
 
-    int updateByPrimaryKeySelective(CustomerModel model);
+	public int updateByPrimaryKeySelective(CustomerModel model);
 
 }

@@ -1,16 +1,16 @@
 package com.rentalapp.domain.repository;
 
-import com.rentalapp.model.CustomerModel;
-
 import java.util.List;
+
+import com.rentalapp.model.CustomerModel;
 
 public interface CustomerRepository {
 
-    int insert(CustomerModel model);
+	public int insert(CustomerModel model);
 
-    CustomerModel selectOne(String id);
+	public CustomerModel selectOne(String id);
 
-    List<CustomerModel> selectAll();
+	public List<CustomerModel> selectAll();
 
-    int updateByPrimaryKeySelective(CustomerModel model);
+	public int updateByPrimaryKeySelective(CustomerModel model);
 }

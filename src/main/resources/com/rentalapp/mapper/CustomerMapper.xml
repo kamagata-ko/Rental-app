@@ -1,38 +1,51 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.rentalapp.mapper.CustomerMapper">
-    <insert id="insert" parameterType="com.rentalapp.model.CustomerModel" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO
-        t_customer
-        (
-        password
-        ,name
-        ,sex
-        ,birthday
-        ,register_date
-        ,update_date
-        )
-        VALUES
-        (
-        #{password}
-        ,#{name}
-        ,#{sex}
-        ,#{birthday}
-        ,#{registerDate}
-        ,#{updateDate}
-        )
-    </insert>
-    <select id="selectOne" parameterType="string" resultType="com.rentalapp.model.CustomerModel">
-        SELECT * FROM t_customer WHERE id = #{id}
-    </select>
-    <select id="selectAll" resultType="com.rentalapp.model.CustomerModel">
-        SELECT * FROM t_customer
-    </select>
-    <update id="updateByPrimaryKeySelective">
-        UPDATE t_customer SET
-        name = '試験 太郎'
-        ,update_date = #{updateDate}
-        WHERE id = '00003';
-    </update>
+	<insert id="insert" parameterType="com.rentalapp.model.CustomerModel" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO
+			t_customer
+			(
+				password
+				,name
+				,sex
+				,birthday
+				,register_date
+				,update_date
+			)
+		VALUES
+		(
+			#{password}
+			,#{name}
+			,#{sex}
+			,#{birthday}
+			,#{registerDate}
+			,#{updateDate}
+		)
+	</insert>
+	<select id="selectOne" parameterType="string" resultType="com.rentalapp.model.CustomerModel">
+		SELECT * FROM t_customer WHERE id = #{id}
+	</select>
+	<select id="selectAll" resultType="com.rentalapp.model.CustomerModel">
+		SELECT * FROM t_customer
+	</select>
+	<update id="updateByPrimaryKeySelective">
+		UPDATE t_customer
+		<set>
+			<if test="password != null and password != ''">
+				password = #{password},
+			</if>
+			<if test="name != null and name != ''">
+				name = #{name},
+			</if>
+			<if test="sex != null and sex != ''">
+				sex = #{sex},
+			</if>
+			<if test="birthday != null and birthday != ''">
+				birthday = #{birthday},
+			</if>
+			update_date = #{updateDate},
+		</set>
+		WHERE id = '3';
+	</update>
 </mapper>
