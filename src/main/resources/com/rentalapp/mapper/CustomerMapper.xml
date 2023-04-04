@@ -30,9 +30,22 @@
 		SELECT * FROM t_customer
 	</select>
 	<update id="updateByPrimaryKeySelective">
-		UPDATE t_customer SET
-		name = '更新 太郎'
-		,update_date = #{updateDate}
+		UPDATE t_customer
+		<set>
+			<if test="password != null and password != ''">
+				password = #{password},
+			</if>
+			<if test="name != null and name != ''">
+				name = #{name},
+			</if>
+			<if test="sex != null and sex != ''">
+				sex = #{sex},
+			</if>
+			<if test="birthday != null and birthday != ''">
+				birthday = #{birthday},
+			</if>
+		</set>
+		update_date = #{updateDate}
 		WHERE id = '3';
 	</update>
 </mapper>
