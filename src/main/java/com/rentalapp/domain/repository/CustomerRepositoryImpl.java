@@ -1,12 +1,14 @@
 package com.rentalapp.domain.repository;
 
-import com.rentalapp.mapper.CustomerMapper;
-import com.rentalapp.model.CustomerModel;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
-
 import java.time.LocalDateTime;
 import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import com.rentalapp.mapper.CustomerMapper;
+import com.rentalapp.model.CustomerModel;
+
+import lombok.RequiredArgsConstructor;
 
 @Repository
 @RequiredArgsConstructor
@@ -37,6 +39,11 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 		LocalDateTime ldt = LocalDateTime.now();
 		model.setUpdateDate(ldt);
 		return mapper.updateByPrimaryKeySelective(model);
+	}
+
+	@Override
+	public int deleteOne(String id) {
+		return mapper.deleteOne(id);
 	}
 
 }

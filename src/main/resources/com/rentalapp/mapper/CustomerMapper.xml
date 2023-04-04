@@ -48,4 +48,7 @@
 		</set>
 		WHERE id = '3';
 	</update>
+	<update id="deleteOne">
+		UPDATE t_customer SET delete_flg = '1' WHERE id = '3'
+	</update>
 </mapper>

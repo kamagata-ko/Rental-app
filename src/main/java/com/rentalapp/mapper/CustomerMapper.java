@@ -17,4 +17,6 @@ public interface CustomerMapper {
 
 	public int updateByPrimaryKeySelective(CustomerModel model);
 
+	public int deleteOne(String id);
+
 }
