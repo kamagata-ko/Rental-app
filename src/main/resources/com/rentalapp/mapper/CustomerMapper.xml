@@ -44,8 +44,8 @@
 			<if test="birthday != null and birthday != ''">
 				birthday = #{birthday},
 			</if>
+			update_date = #{updateDate},
 		</set>
-		update_date = #{updateDate}
 		WHERE id = '3';
 	</update>
 </mapper>
