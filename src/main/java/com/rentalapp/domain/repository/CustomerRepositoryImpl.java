@@ -25,7 +25,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 	}
 
 	@Override
-	public CustomerModel selectOne(String id) {
+	public CustomerModel selectOne(int id) {
 		return mapper.selectOne(id);
 	}
 
@@ -42,7 +42,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 	}
 
 	@Override
-	public int deleteOne(String id) {
+	public int deleteOne(int id) {
 		return mapper.deleteOne(id);
 	}
 

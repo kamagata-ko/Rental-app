@@ -31,7 +31,7 @@ public class CustomerController {
 
 	@GetMapping(value = "{id}")
 	public CustomerModel selectOne(@PathVariable("id") String id) {
-		return service.selectOne(id);
+		return service.selectOne(Integer.parseInt(id));
 	}
 
 	@GetMapping
@@ -40,13 +40,13 @@ public class CustomerController {
 	}
 
 	@PutMapping(value = "{id}")
-	public int update(@PathVariable("id") String id, CustomerModel model) {
+	public int update(@PathVariable("id") int id, CustomerModel model) {
 		model.setId(id);
 		return service.update(model);
 	}
 
 	@DeleteMapping(value = "{id}")
-	public int deleteOne(@PathVariable("id") String id) {
+	public int deleteOne(@PathVariable("id") int id) {
 		return service.deleteOne(id);
 	}
 

@@ -23,7 +23,7 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public CustomerModel selectOne(String id) {
+	public CustomerModel selectOne(int id) {
 		return repository.selectOne(id);
 	}
 
@@ -38,7 +38,7 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public int deleteOne(String id) {
+	public int deleteOne(int id) {
 		return repository.deleteOne(id);
 	}
 }
