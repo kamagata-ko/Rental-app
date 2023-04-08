@@ -8,11 +8,11 @@ public interface CustomerService {
 
 	public int insert(CustomerModel model);
 
-	public CustomerModel selectOne(String id);
+	public CustomerModel selectOne(int id);
 
 	public List<CustomerModel> selectAll();
 
 	public int update(CustomerModel model);
 
-	public int deleteOne(String id);
+	public int deleteOne(int id);
 }

@@ -11,12 +11,12 @@ public interface CustomerMapper {
 
 	public int insert(CustomerModel model);
 
-	public CustomerModel selectOne(String id);
+	public CustomerModel selectOne(int id);
 
 	public List<CustomerModel> selectAll();
 
 	public int updateByPrimaryKeySelective(CustomerModel model);
 
-	public int deleteOne(String id);
+	public int deleteOne(int id);
 
 }

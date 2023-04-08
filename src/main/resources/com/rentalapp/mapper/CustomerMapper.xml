@@ -23,7 +23,7 @@
 			,#{updateDate}
 		)
 	</insert>
-	<select id="selectOne" parameterType="string" resultType="com.rentalapp.model.CustomerModel">
+	<select id="selectOne" parameterType="int" resultType="com.rentalapp.model.CustomerModel">
 		SELECT * FROM t_customer WHERE id = #{id}
 	</select>
 	<select id="selectAll" resultType="com.rentalapp.model.CustomerModel">
