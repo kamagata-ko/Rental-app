@@ -35,7 +35,6 @@ jobs:
           distribution: temurin
 
       - name: Execute Gradle build
-        working-directory: product-search-service
         run: ./gradlew build --no-daemon
 
 #     下記はテストソースを実施後に追加すればいいかな・・？テスト結果を出力する設定です。
