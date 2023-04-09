@@ -1,7 +1,9 @@
 package com.rentalapp.controller;
 
-import java.util.List;
-
+import com.rentalapp.domain.service.CustomerService;
+import com.rentalapp.model.CustomerModel;
+import io.swagger.v3.oas.annotations.Operation;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,42 +14,44 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.rentalapp.domain.service.CustomerService;
-import com.rentalapp.model.CustomerModel;
-
-import lombok.RequiredArgsConstructor;
+import java.util.List;
 
 @RestController
 @RequestMapping("customer")
 @RequiredArgsConstructor
 public class CustomerController {
 
-	private final CustomerService service;
+    private final CustomerService service;
 
-	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-	public int insertCustomer(@RequestBody CustomerModel model) {
-		return service.insert(model);
-	}
+    @Operation(summary = "書籍の登録")
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public int insertCustomer(@RequestBody CustomerModel model) {
+        return service.insert(model);
+    }
 
-	@GetMapping(value = "{id}")
-	public CustomerModel selectOne(@PathVariable("id") String id) {
-		return service.selectOne(Integer.parseInt(id));
-	}
+    @Operation(summary = "書籍の検索(ID検索)")
+    @GetMapping(value = "{id}")
+    public CustomerModel selectOne(@PathVariable("id") String id) {
+        return service.selectOne(Integer.parseInt(id));
+    }
 
-	@GetMapping
-	public List<CustomerModel> selectAll() {
-		return service.selectAll();
-	}
+    @Operation(summary = "書籍の全件検索")
+    @GetMapping
+    public List<CustomerModel> selectAll() {
+        return service.selectAll();
+    }
 
-	@PutMapping(value = "{id}")
-	public int update(@PathVariable("id") int id, CustomerModel model) {
-		model.setId(id);
-		return service.update(model);
-	}
+    @Operation(summary = "書籍の更新")
+    @PutMapping(value = "{id}")
+    public int update(@PathVariable("id") int id, CustomerModel model) {
+        model.setId(id);
+        return service.update(model);
+    }
 
-	@DeleteMapping(value = "{id}")
-	public int deleteOne(@PathVariable("id") int id) {
-		return service.deleteOne(id);
-	}
+    @Operation(summary = "書籍の削除")
+    @DeleteMapping(value = "{id}")
+    public int deleteOne(@PathVariable("id") int id) {
+        return service.deleteOne(id);
+    }
 
 }
