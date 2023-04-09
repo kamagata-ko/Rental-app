@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.rentalapp.mapper.CustomerMapper">
-	<insert id="insert" parameterType="com.rentalapp.model.CustomerModel" useGeneratedKeys="true" keyProperty="id">
+<mapper namespace="com.rentalapp.infrastructure.mapper.CustomerMapper">
+	<insert id="insert" parameterType="com.rentalapp.infrastructure.model.TCustomerModel" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO
 			t_customer
 			(
@@ -23,10 +23,10 @@
 			,#{updateDate}
 		)
 	</insert>
-	<select id="selectOne" parameterType="int" resultType="com.rentalapp.model.CustomerModel">
+	<select id="selectOne" parameterType="int" resultType="com.rentalapp.infrastructure.model.TCustomerModel">
 		SELECT * FROM t_customer WHERE id = #{id}
 	</select>
-	<select id="selectAll" resultType="com.rentalapp.model.CustomerModel">
+	<select id="selectAll" resultType="com.rentalapp.infrastructure.model.TCustomerModel">
 		SELECT * FROM t_customer
 	</select>
 	<update id="updateByPrimaryKeySelective">
