@@ -9,14 +9,14 @@ import com.rentalapp.infrastructure.model.TCustomerModel;
 @Mapper
 public interface CustomerMapper {
 
-	public int insert(TCustomerModel model);
+	int insert(TCustomerModel model);
 
-	public TCustomerModel selectOne(int id);
+	TCustomerModel selectOne(int id);
 
-	public List<TCustomerModel> selectAll();
+	List<TCustomerModel> selectAll();
 
-	public int updateByPrimaryKeySelective(TCustomerModel model);
+	int updateByPrimaryKeySelective(TCustomerModel model);
 
-	public int deleteOne(int id);
+	int deleteOne(int id);
 
 }
