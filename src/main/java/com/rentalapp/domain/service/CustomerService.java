@@ -6,13 +6,13 @@ import com.rentalapp.model.CustomerModel;
 
 public interface CustomerService {
 
-	public int insert(CustomerModel model);
+	int insert(CustomerModel model);
 
-	public CustomerModel selectOne(int id);
+	CustomerModel selectOne(int id);
 
-	public List<CustomerModel> selectAll();
+	List<CustomerModel> selectAll();
 
-	public int update(CustomerModel model);
+	int update(CustomerModel model);
 
-	public int deleteOne(int id);
+	int deleteOne(int id);
 }

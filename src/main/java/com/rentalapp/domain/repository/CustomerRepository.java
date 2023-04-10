@@ -6,13 +6,13 @@ import com.rentalapp.model.CustomerModel;
 
 public interface CustomerRepository {
 
-	public int insert(CustomerModel model);
+	int insert(CustomerModel model);
 
-	public CustomerModel selectOne(int id);
+	CustomerModel selectOne(int id);
 
-	public List<CustomerModel> selectAll();
+	List<CustomerModel> selectAll();
 
-	public int updateByPrimaryKeySelective(CustomerModel model);
+	int updateByPrimaryKeySelective(CustomerModel model);
 
-	public int deleteOne(int id);
+	int deleteOne(int id);
 }

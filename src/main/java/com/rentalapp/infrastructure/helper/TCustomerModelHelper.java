@@ -5,10 +5,10 @@ import com.rentalapp.model.CustomerModel;
 
 public interface TCustomerModelHelper {
 
-	/* モデルから テーブルモデルへ。※実装は後ほど・・・ */
-	public TCustomerModel toTableModel(CustomerModel model);
+	/* モデルから テーブルモデルへ。 */
+	TCustomerModel toTableModel(CustomerModel model);
 
-	/* テーブルモデルから モデルへ。※実装は後ほど・・・ */
-	public CustomerModel toModel(TCustomerModel model);
+	/* テーブルモデルから モデルへ。 */
+	CustomerModel toModel(TCustomerModel model);
 
 }
