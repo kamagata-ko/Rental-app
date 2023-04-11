@@ -9,6 +9,7 @@ import com.rentalapp.model.CustomerModel;
 public class TCustomerModelHelperImpl implements TCustomerModelHelper {
 
 	/* モデルから テーブルモデルへ。 */
+	@Override
 	public TCustomerModel toTableModel(CustomerModel model) {
 		TCustomerModel tableModel = new TCustomerModel();
 		tableModel.setId(model.getId());
@@ -22,6 +23,7 @@ public class TCustomerModelHelperImpl implements TCustomerModelHelper {
 	}
 
 	/* テーブルモデルから モデルへ。 */
+	@Override
 	public CustomerModel toModel(TCustomerModel tableModel) {
 		CustomerModel model = new CustomerModel();
 		model.setId(tableModel.getId());
