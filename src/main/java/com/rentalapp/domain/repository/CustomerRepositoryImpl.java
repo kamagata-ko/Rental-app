@@ -13,14 +13,22 @@ import com.rentalapp.model.CustomerModel;
 
 import lombok.RequiredArgsConstructor;
 
+/**
+ * 顧客情報リポジトリ実装クラス.
+ */
 @Repository
 @RequiredArgsConstructor
 public class CustomerRepositoryImpl implements CustomerRepository {
 
+	/* 顧客マッパー */
 	private final CustomerMapper mapper;
 
+	/* 顧客ヘルパー */
 	private final TCustomerModelHelper helper;
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public int insert(CustomerModel model) {
 		LocalDateTime ldt = LocalDateTime.now();
@@ -29,12 +37,18 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 		return mapper.insert(helper.toTableModel(model));
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public CustomerModel selectOne(int id) {
 		TCustomerModel result = mapper.selectOne(id);
 		return helper.toModel(result);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public List<CustomerModel> selectAll() {
 		// 結果格納用のリストを作成。
@@ -46,6 +60,9 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 		return list;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public int updateByPrimaryKeySelective(CustomerModel model) {
 		LocalDateTime ldt = LocalDateTime.now();
@@ -53,6 +70,9 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 		return mapper.updateByPrimaryKeySelective(helper.toTableModel(model));
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public int deleteOne(int id) {
 		return mapper.deleteOne(id);

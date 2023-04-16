@@ -14,25 +14,39 @@ import com.rentalapp.model.CustomerModel;
 
 import lombok.RequiredArgsConstructor;
 
+/**
+ * 顧客APIコントローラー.
+ */
 @RestController
 @RequiredArgsConstructor
 public class CustomerController implements CustomerApi {
 
+	/* 顧客サービス */
 	private final CustomerService service;
 
+	/* 顧客ヘルパー */
 	private final CustomerHelper helper;
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public int insertCustomer(CustomerRequest request) {
 		return service.insert(helper.toCustomerModel(request));
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public CustomerResponse selectOne(String id) {
 		CustomerModel result = service.selectOne(Integer.parseInt(id));
 		return helper.toCustomerResponse(result);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public List<CustomerResponse> selectAll() {
 		List<CustomerResponse> list = new ArrayList<CustomerResponse>();
@@ -43,6 +57,9 @@ public class CustomerController implements CustomerApi {
 		return list;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public int update(int id, CustomerRequest request) {
 		request.setId(id);
@@ -50,6 +67,9 @@ public class CustomerController implements CustomerApi {
 		return service.update(model);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public int deleteOne(int id) {
 		return service.deleteOne(id);
