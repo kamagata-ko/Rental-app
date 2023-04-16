@@ -28,7 +28,7 @@ CREATE TABLE "t_staff" (
 
 CREATE TABLE "t_rental_history" (
   "id" char PRIMARY KEY,
-  "customer_id" char NOT NULL,
+  "customer_id" int NOT NULL,
   "book_id" char NOT NULL,
   "rental_start_date" timestamp NOT NULL DEFAULT (now()),
   "scheduled_return_date" timestamp NOT NULL,
