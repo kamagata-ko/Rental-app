@@ -16,25 +16,25 @@ import com.rentalapp.application.model.CustomerResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
 
-@RequestMapping("customer")
+@RequestMapping("customers")
 public interface CustomerApi {
-	@Operation(summary = "書籍の登録")
+	@Operation(summary = "顧客の登録")
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	int insertCustomer(@RequestBody CustomerRequest request);
 
-	@Operation(summary = "書籍の検索(ID検索)")
+	@Operation(summary = "顧客の検索(ID検索)")
 	@GetMapping(value = "{id}")
 	CustomerResponse selectOne(@PathVariable("id") String id);
 
-	@Operation(summary = "書籍の全件検索")
+	@Operation(summary = "顧客の全件検索")
 	@GetMapping
 	List<CustomerResponse> selectAll();
 
-	@Operation(summary = "書籍の更新")
+	@Operation(summary = "顧客の更新")
 	@PutMapping(value = "{id}")
 	int update(@PathVariable("id") int id, CustomerRequest model);
 
-	@Operation(summary = "書籍の削除")
+	@Operation(summary = "顧客の削除")
 	@DeleteMapping(value = "{id}")
 	int deleteOne(@PathVariable("id") int id);
 }
