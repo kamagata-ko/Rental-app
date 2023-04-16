@@ -1,11 +1,10 @@
 package com.rentalapp.application.model;
 
-import lombok.Data;
 
 import java.time.LocalDateTime;
 import java.util.Date;
 
-@Data
+
 public record CustomerUpdateRequest(
         /* パスワード */
         String password,

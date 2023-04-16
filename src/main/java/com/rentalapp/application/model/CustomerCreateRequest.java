@@ -1,10 +1,8 @@
 package com.rentalapp.application.model;
 
-import lombok.Data;
 
 import java.util.Date;
 
-@Data
 public record CustomerCreateRequest(
         /* パスワード */
         String password,
