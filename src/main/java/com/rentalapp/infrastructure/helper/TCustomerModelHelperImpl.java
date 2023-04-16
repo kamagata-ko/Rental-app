@@ -5,10 +5,15 @@ import org.springframework.stereotype.Component;
 import com.rentalapp.infrastructure.model.TCustomerModel;
 import com.rentalapp.model.CustomerModel;
 
+/**
+ * 顧客情報ヘルパー実装クラス.
+ */
 @Component
 public class TCustomerModelHelperImpl implements TCustomerModelHelper {
 
-	/* モデルから テーブルモデルへ。 */
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public TCustomerModel toTableModel(CustomerModel model) {
 		TCustomerModel tableModel = new TCustomerModel();
@@ -22,7 +27,9 @@ public class TCustomerModelHelperImpl implements TCustomerModelHelper {
 		return tableModel;
 	}
 
-	/* テーブルモデルから モデルへ。 */
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public CustomerModel toModel(TCustomerModel tableModel) {
 		CustomerModel model = new CustomerModel();

@@ -6,9 +6,15 @@ import com.rentalapp.application.model.CustomerRequest;
 import com.rentalapp.application.model.CustomerResponse;
 import com.rentalapp.model.CustomerModel;
 
+/**
+ * 顧客APIヘルパー実装クラス.
+ */
 @Component
 public class CustomerHelperImpl implements CustomerHelper {
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public CustomerModel toCustomerModel(CustomerRequest req) {
 		CustomerModel model = new CustomerModel();
@@ -22,6 +28,9 @@ public class CustomerHelperImpl implements CustomerHelper {
 		return model;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public CustomerResponse toCustomerResponse(CustomerModel model) {
 		CustomerResponse res = new CustomerResponse();
