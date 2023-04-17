@@ -9,8 +9,8 @@ import com.rentalapp.application.api.CustomerApi;
 import com.rentalapp.application.helper.CustomerHelper;
 import com.rentalapp.application.model.CustomerRequest;
 import com.rentalapp.application.model.CustomerResponse;
+import com.rentalapp.domain.model.CustomerModel;
 import com.rentalapp.domain.service.CustomerService;
-import com.rentalapp.model.CustomerModel;
 
 import lombok.RequiredArgsConstructor;
 

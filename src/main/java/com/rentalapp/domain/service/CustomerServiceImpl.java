@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.rentalapp.domain.model.CustomerModel;
 import com.rentalapp.domain.repository.CustomerRepository;
-import com.rentalapp.model.CustomerModel;
 
 import lombok.RequiredArgsConstructor;
 
