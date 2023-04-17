@@ -2,8 +2,8 @@ package com.rentalapp.infrastructure.helper;
 
 import org.springframework.stereotype.Component;
 
+import com.rentalapp.domain.model.CustomerModel;
 import com.rentalapp.infrastructure.model.TCustomerModel;
-import com.rentalapp.model.CustomerModel;
 
 /**
  * 顧客情報ヘルパー実装クラス.

@@ -6,10 +6,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.rentalapp.domain.model.CustomerModel;
 import com.rentalapp.infrastructure.helper.TCustomerModelHelper;
 import com.rentalapp.infrastructure.mapper.CustomerMapper;
 import com.rentalapp.infrastructure.model.TCustomerModel;
-import com.rentalapp.model.CustomerModel;
 
 import lombok.RequiredArgsConstructor;
 

@@ -2,7 +2,7 @@ package com.rentalapp.domain.service;
 
 import java.util.List;
 
-import com.rentalapp.model.CustomerModel;
+import com.rentalapp.domain.model.CustomerModel;
 
 /**
  * 顧客情報サービスインターフェース.

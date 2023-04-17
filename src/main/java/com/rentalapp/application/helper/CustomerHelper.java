@@ -2,7 +2,7 @@ package com.rentalapp.application.helper;
 
 import com.rentalapp.application.model.CustomerRequest;
 import com.rentalapp.application.model.CustomerResponse;
-import com.rentalapp.model.CustomerModel;
+import com.rentalapp.domain.model.CustomerModel;
 
 /**
  * 顧客APIヘルパー
