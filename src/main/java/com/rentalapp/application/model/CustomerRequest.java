@@ -1,4 +1,4 @@
-package com.rentalapp.application.model;
+package com.rentalapp.application.model,
 
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -8,22 +8,21 @@ import lombok.Data;
 /**
  * 顧客APIリクエスト.
  */
-@Data
-public class CustomerRequest {
-	/* ID */
-	private int id;
-	/* パスワード */
-	private String password;
-	/* 名前 */
-	private String name;
-	/* 性別 */
-	private int sex;
-	/* 生年月日 */
-	private Date birthday;
-	/* 登録日時 */
-	private LocalDateTime registerDate;
-	/* 更新日時 */
-	private LocalDateTime updateDate;
-	/* 削除フラグ */
-	private int deleteFlg;
+public record CustomerRequest(
+		/* ID */
+		int id,
+		/* パスワード */
+		String password,
+		/* 名前 */
+		String name,
+		/* 性別 */
+		int sex,
+		/* 生年月日 */
+		Date birthday,
+		/* 登録日時 */
+		LocalDateTime registerDate,
+		/* 更新日時 */
+		LocalDateTime updateDate,
+		/* 削除フラグ */
+		int deleteFlg) {
 }
