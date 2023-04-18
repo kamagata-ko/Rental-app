@@ -14,7 +14,7 @@ public interface CustomerHelper {
 	 * @param req 顧客APIリクエスト
 	 * @return 顧客モデル
 	 */
-	CustomerModel toCustomerModel(CustomerRequest req);
+	CustomerModel toModel(CustomerRequest req);
 
 	/**
 	 * 顧客モデルから顧客APIレスポンスへ変換.
@@ -22,6 +22,6 @@ public interface CustomerHelper {
 	 * @param model 顧客モデル
 	 * @return 顧客APIレスポンス
 	 */
-	CustomerResponse toCustomerResponse(CustomerModel model);
+	CustomerResponse toResponse(CustomerModel model);
 
 }

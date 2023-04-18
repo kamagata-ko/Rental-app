@@ -32,7 +32,7 @@ public class CustomerController implements CustomerApi {
 	 */
 	@Override
 	public int insertCustomer(CustomerRequest request) {
-		return service.insert(helper.toCustomerModel(request));
+		return service.insert(helper.toModel(request));
 	}
 
 	/**
@@ -41,7 +41,7 @@ public class CustomerController implements CustomerApi {
 	@Override
 	public CustomerResponse selectOne(String id) {
 		CustomerModel result = service.selectOne(Integer.parseInt(id));
-		return helper.toCustomerResponse(result);
+		return helper.toResponse(result);
 	}
 
 	/**
@@ -52,7 +52,7 @@ public class CustomerController implements CustomerApi {
 		List<CustomerResponse> list = new ArrayList<CustomerResponse>();
 		List<CustomerModel> result = service.selectAll();
 		for (CustomerModel tableModel : result) {
-			list.add(helper.toCustomerResponse(tableModel));
+			list.add(helper.toResponse(tableModel));
 		}
 		return list;
 	}
@@ -63,7 +63,7 @@ public class CustomerController implements CustomerApi {
 	@Override
 	public int update(int id, CustomerRequest request) {
 		request.setId(id);
-		CustomerModel model = helper.toCustomerModel(request);
+		CustomerModel model = helper.toModel(request);
 		return service.update(model);
 	}
 

@@ -16,7 +16,7 @@ public class CustomerHelperImpl implements CustomerHelper {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public CustomerModel toCustomerModel(CustomerRequest req) {
+	public CustomerModel toModel(CustomerRequest req) {
 		CustomerModel model = new CustomerModel();
 		model.setId(req.getId());
 		model.setPassword(req.getPassword());
@@ -32,7 +32,7 @@ public class CustomerHelperImpl implements CustomerHelper {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public CustomerResponse toCustomerResponse(CustomerModel model) {
+	public CustomerResponse toResponse(CustomerModel model) {
 		CustomerResponse res = new CustomerResponse();
 		res.setId(model.getId());
 		res.setPassword(model.getPassword());
