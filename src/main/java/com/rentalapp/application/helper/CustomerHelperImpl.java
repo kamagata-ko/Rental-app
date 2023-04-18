@@ -17,15 +17,15 @@ public class CustomerHelperImpl implements CustomerHelper {
 	 */
 	@Override
 	public CustomerModel toModel(CustomerRequest req) {
-		CustomerModel model = new CustomerModel();
-		model.setId(req.getId());
-		model.setPassword(req.getPassword());
-		model.setName(req.getName());
-		model.setSex(req.getSex());
-		model.setBirthday(req.getBirthday());
-		model.setRegisterDate(req.getRegisterDate());
-		model.setUpdateDate(req.getUpdateDate());
-		return model;
+		return CustomerModel.builder()
+				.id(req.id())
+				.password(req.password())
+				.name(req.name())
+				.sex(req.sex())
+				.birthday(req.birthday())
+				.registerDate(req.registerDate())
+				.deleteFlg(req.deleteFlg())
+				.build();
 	}
 
 	/**
@@ -33,15 +33,15 @@ public class CustomerHelperImpl implements CustomerHelper {
 	 */
 	@Override
 	public CustomerResponse toResponse(CustomerModel model) {
-		CustomerResponse res = new CustomerResponse();
-		res.setId(model.getId());
-		res.setPassword(model.getPassword());
-		res.setName(model.getName());
-		res.setSex(model.getSex());
-		res.setBirthday(model.getBirthday());
-		res.setRegisterDate(model.getRegisterDate());
-		res.setUpdateDate(model.getUpdateDate());
-		return res;
+		return CustomerResponse.builder()
+				.id(model.getId())
+				.password(model.getPassword())
+				.name(model.getName())
+				.sex(model.getSex())
+				.birthday(model.getBirthday())
+				.registerDate(model.getRegisterDate())
+				.updateDate(model.getUpdateDate())
+				.build();
 	}
 
 }
