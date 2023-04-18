@@ -41,14 +41,14 @@
 			<if test="sex != null and sex != ''">
 				sex = #{sex},
 			</if>
-			<if test="birthday != null and birthday != ''">
+			<if test="birthday != null">
 				birthday = #{birthday},
 			</if>
-			update_date = #{updateDate},
+			update_date = #{updateDate}
 		</set>
-		WHERE id = '3';
+		WHERE id = #{id}
 	</update>
 	<update id="deleteOne">
-		UPDATE t_customer SET delete_flg = '1' WHERE id = '3'
+		UPDATE t_customer SET delete_flg = '1' WHERE id = #{id}
 	</update>
 </mapper>

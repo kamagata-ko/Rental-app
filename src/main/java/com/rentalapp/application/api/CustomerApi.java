@@ -60,7 +60,7 @@ public interface CustomerApi {
 	 */
 	@Operation(summary = "顧客の更新")
 	@PutMapping(value = "{id}")
-	int update(@PathVariable("id") int id, CustomerRequest req);
+	int update(@PathVariable("id") int id, @RequestBody CustomerRequest req);
 
 	/**
 	 * 顧客情報削除処理（論理削除）.
