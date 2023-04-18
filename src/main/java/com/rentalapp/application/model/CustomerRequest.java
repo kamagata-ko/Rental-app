@@ -1,9 +1,7 @@
-package com.rentalapp.application.model,
+package com.rentalapp.application.model;
 
 import java.time.LocalDateTime;
 import java.util.Date;
-
-import lombok.Data;
 
 /**
  * 顧客APIリクエスト.
