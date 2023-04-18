@@ -4,9 +4,11 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
- * 顧客APIリクエスト（データ更新用）.
+ * 顧客APIリクエスト.
  */
-public record CustomerRequest(
+public record CustomerUpdateRequest(
+		/* ID */
+		int id,
 		/* パスワード */
 		String password,
 		/* 名前 */
@@ -15,6 +17,8 @@ public record CustomerRequest(
 		int sex,
 		/* 生年月日 */
 		Date birthday,
+		/* 登録日時 */
+		LocalDateTime registerDate,
 		/* 更新日時 */
 		LocalDateTime updateDate,
 		/* 削除フラグ */

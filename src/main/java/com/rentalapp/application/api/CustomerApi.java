@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.rentalapp.application.model.CustomerRequest;
+import com.rentalapp.application.model.CustomerCreateRequest;
 import com.rentalapp.application.model.CustomerResponse;
+import com.rentalapp.application.model.CustomerUpdateRequest;
 
 import io.swagger.v3.oas.annotations.Operation;
 
@@ -30,7 +31,7 @@ public interface CustomerApi {
 	 */
 	@Operation(summary = "顧客の登録")
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-	int insertCustomer(@RequestBody CustomerRequest request);
+	int insertCustomer(@RequestBody CustomerCreateRequest request);
 
 	/**
 	 * 顧客情報取得（１件）.
@@ -60,7 +61,7 @@ public interface CustomerApi {
 	 */
 	@Operation(summary = "顧客の更新")
 	@PutMapping(value = "{id}")
-	int update(@PathVariable("id") int id, @RequestBody CustomerRequest req);
+	int update(@PathVariable("id") int id, @RequestBody CustomerUpdateRequest req);
 
 	/**
 	 * 顧客情報削除処理（論理削除）.
