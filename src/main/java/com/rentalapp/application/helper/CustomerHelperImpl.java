@@ -2,8 +2,9 @@ package com.rentalapp.application.helper;
 
 import org.springframework.stereotype.Component;
 
-import com.rentalapp.application.model.CustomerRequest;
+import com.rentalapp.application.model.CustomerCreateRequest;
 import com.rentalapp.application.model.CustomerResponse;
+import com.rentalapp.application.model.CustomerUpdateRequest;
 import com.rentalapp.domain.model.CustomerModel;
 
 /**
@@ -16,9 +17,22 @@ public class CustomerHelperImpl implements CustomerHelper {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public CustomerModel toModel(CustomerRequest req) {
+	public CustomerModel toModel(CustomerCreateRequest req) {
 		return CustomerModel.builder()
-				.id(req.id())
+				.password(req.password())
+				.name(req.name())
+				.sex(req.sex())
+				.birthday(req.birthday())
+				.build();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public CustomerModel toModel(CustomerUpdateRequest req, int id) {
+		return CustomerModel.builder()
+				.id(id)
 				.password(req.password())
 				.name(req.name())
 				.sex(req.sex())

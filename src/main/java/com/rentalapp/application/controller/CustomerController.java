@@ -7,8 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.rentalapp.application.api.CustomerApi;
 import com.rentalapp.application.helper.CustomerHelper;
-import com.rentalapp.application.model.CustomerRequest;
+import com.rentalapp.application.model.CustomerCreateRequest;
 import com.rentalapp.application.model.CustomerResponse;
+import com.rentalapp.application.model.CustomerUpdateRequest;
 import com.rentalapp.domain.model.CustomerModel;
 import com.rentalapp.domain.service.CustomerService;
 
@@ -31,7 +32,7 @@ public class CustomerController implements CustomerApi {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public int insertCustomer(CustomerRequest request) {
+	public int insertCustomer(CustomerCreateRequest request) {
 		return service.insert(helper.toModel(request));
 	}
 
@@ -61,9 +62,8 @@ public class CustomerController implements CustomerApi {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public int update(int id, CustomerRequest request) {
-		request.setId(id);
-		CustomerModel model = helper.toModel(request);
+	public int update(int id, CustomerUpdateRequest request) {
+		CustomerModel model = helper.toModel(request, id);
 		return service.update(model);
 	}
 
