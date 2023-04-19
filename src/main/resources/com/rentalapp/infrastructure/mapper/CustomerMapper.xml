@@ -8,7 +8,7 @@
 			(
 				password
 				,name
-				,sex
+				,gender
 				,birthday
 				,register_date
 				,update_date
@@ -17,7 +17,7 @@
 		(
 			#{password}
 			,#{name}
-			,#{sex}
+			,#{gender}
 			,#{birthday}
 			,#{registerDate}
 			,#{updateDate}
@@ -38,8 +38,8 @@
 			<if test="name != null and name != ''">
 				name = #{name},
 			</if>
-			<if test="sex != null and sex != ''">
-				sex = #{sex},
+			<if test="gender != null and gender != ''">
+				gender = #{gender},
 			</if>
 			<if test="birthday != null">
 				birthday = #{birthday},

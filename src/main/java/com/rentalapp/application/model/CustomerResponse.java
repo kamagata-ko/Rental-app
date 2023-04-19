@@ -23,7 +23,7 @@ public class CustomerResponse {
 	/* 名前 */
 	private String name;
 	/* 性別 */
-	private int sex;
+	private int gender;
 	/* 生年月日 */
 	private Date birthday;
 	/* 登録日時 */

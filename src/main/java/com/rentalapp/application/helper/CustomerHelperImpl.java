@@ -21,7 +21,7 @@ public class CustomerHelperImpl implements CustomerHelper {
 		return CustomerModel.builder()
 				.password(req.password())
 				.name(req.name())
-				.sex(req.sex())
+				.gender(req.gender())
 				.birthday(req.birthday())
 				.build();
 	}
@@ -35,7 +35,7 @@ public class CustomerHelperImpl implements CustomerHelper {
 				.id(id)
 				.password(req.password())
 				.name(req.name())
-				.sex(req.sex())
+				.gender(req.gender())
 				.birthday(req.birthday())
 				.registerDate(req.registerDate())
 				.deleteFlg(req.deleteFlg())
@@ -51,7 +51,7 @@ public class CustomerHelperImpl implements CustomerHelper {
 				.id(model.getId())
 				.password(model.getPassword())
 				.name(model.getName())
-				.sex(model.getSex())
+				.gender(model.getGender())
 				.birthday(model.getBirthday())
 				.registerDate(model.getRegisterDate())
 				.updateDate(model.getUpdateDate())
