@@ -12,7 +12,7 @@ public record CustomerRequest(
 		/* 名前 */
 		String name,
 		/* 性別 */
-		int sex,
+		int gender,
 		/* 生年月日 */
 		Date birthday,
 		/* 更新日時 */

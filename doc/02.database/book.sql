@@ -11,7 +11,7 @@ CREATE TABLE "t_customer" (
   "id" serial PRIMARY KEY,
   "password" varchar(10) NOT NULL,
   "name" varchar(10) NOT NULL,
-  "sex" integer CHECK (sex IN (1, 2, 3)),
+  "gender" integer CHECK (gender IN (1, 2, 3)),
   "birthday" date,
   "register_date" timestamp NOT NULL DEFAULT (now()),
   "update_date" timestamp,
