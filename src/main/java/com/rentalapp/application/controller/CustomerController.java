@@ -49,9 +49,14 @@ public class CustomerController implements CustomerApi {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public List<CustomerResponse> selectAll() {
+	public List<CustomerResponse> select(Integer limit, Integer offset, String sort) {
 		List<CustomerResponse> list = new ArrayList<CustomerResponse>();
-		List<CustomerModel> result = service.selectAll();
+		List<CustomerModel> result = service.select(limit, offset, sort);
+		// めも：ほんとはこんな感じで作ったUtilクラスでやってみたい。int Integer と Object 周りがよくわからない、
+		//		List<CustomerModel> result = service.select(
+		//				defaultValue(limit, 10),
+		//				defaultValue(offset, 0),
+		//				defaultValue(sort, "id acs"));
 		for (CustomerModel tableModel : result) {
 			list.add(helper.toResponse(tableModel));
 		}

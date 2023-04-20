@@ -26,8 +26,17 @@
 	<select id="selectOne" parameterType="int" resultType="com.rentalapp.infrastructure.model.TCustomerModel">
 		SELECT * FROM t_customer WHERE id = #{id}
 	</select>
-	<select id="selectAll" resultType="com.rentalapp.infrastructure.model.TCustomerModel">
+	<select id="select" resultType="com.rentalapp.infrastructure.model.TCustomerModel">
 		SELECT * FROM t_customer
+		<if test="sort != null and sort != ''">
+			order by ${sort}
+		</if>
+		<if test="limit != null">
+			limit #{limit}
+		</if>
+		<if test="offset != null">
+			Offset #{offset}
+		</if>
 	</select>
 	<update id="updateByPrimaryKeySelective">
 		UPDATE t_customer

@@ -41,8 +41,8 @@ public class CustomerServiceImpl implements CustomerService {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public List<CustomerModel> selectAll() {
-		return repository.selectAll();
+	public List<CustomerModel> select(int limit, int offset, String sort) {
+		return repository.selectAll(limit, offset, sort);
 	}
 
 	/**

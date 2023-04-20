@@ -3,6 +3,7 @@ package com.rentalapp.infrastructure.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.rentalapp.infrastructure.model.TCustomerModel;
 
@@ -28,11 +29,17 @@ public interface CustomerMapper {
 	TCustomerModel selectOne(int id);
 
 	/**
-	 * 顧客情報取得（全件）。
+	 * 顧客情報取得.
 	 *
-	 * @return 顧客情報（全件）
+	 * @param limit 取得件数
+	 * @param offset 取得開始位置
+	 * @param sort ソート条件
+	 * @return 顧客情報
 	 */
-	List<TCustomerModel> selectAll();
+	List<TCustomerModel> select(
+			@Param("limit") int limit,
+			@Param("offset") int offset,
+			@Param("sort") String sort);
 
 	/**
 	 * 顧客情報更新処理。
