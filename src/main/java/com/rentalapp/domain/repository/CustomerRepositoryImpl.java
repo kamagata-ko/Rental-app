@@ -50,10 +50,10 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public List<CustomerModel> selectAll() {
+	public List<CustomerModel> selectAll(int limit, int offset, String sort) {
 		// 結果格納用のリストを作成。
 		List<CustomerModel> list = new ArrayList<CustomerModel>();
-		List<TCustomerModel> result = mapper.selectAll();
+		List<TCustomerModel> result = mapper.select(limit, offset, sort);
 		for (TCustomerModel tableModel : result) {
 			list.add(helper.toModel(tableModel));
 		}

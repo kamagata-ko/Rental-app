@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.rentalapp.application.model.CustomerCreateRequest;
 import com.rentalapp.application.model.CustomerResponse;
@@ -44,13 +45,19 @@ public interface CustomerApi {
 	CustomerResponse selectOne(@PathVariable("id") String id);
 
 	/**
-	 * 顧客情報取得処理（全件）.
+	 * 顧客情報取得処理.
 	 *
-	 * @return 顧客情報（全件）
+	 * @param limit 取得件数（指定がない場合は10件）
+	 * @param offset 取得開始位置（指定がない場合は0から）
+	 * @param sort ソート条件（指定がない場合はidの昇順）
+	 * @return 顧客情報
 	 */
-	@Operation(summary = "顧客の全件検索")
+	@Operation(summary = "顧客の複数件検索")
 	@GetMapping
-	List<CustomerResponse> selectAll();
+	List<CustomerResponse> select(
+			@RequestParam(name = "limit", required = false, defaultValue = "10") Integer limit,
+			@RequestParam(name = "offset", required = false, defaultValue = "0") Integer offset,
+			@RequestParam(name = "sort", required = false, defaultValue = "id asc") String sort);
 
 	/**
 	 * 顧客情報更新処理.
