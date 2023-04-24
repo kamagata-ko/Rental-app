@@ -2,9 +2,13 @@ package com.rentalapp.application.model;
 
 import java.time.LocalDateTime;
 
-public record BookCreateRequest(
+public record BookUpdateRequest(
         String bookName,
         String author,
         String publisher,
-        LocalDateTime arrivalData) {
+        int status,
+        LocalDateTime arrivalData,
+        LocalDateTime updateDate,
+        int deleteFlg
+) {
 }

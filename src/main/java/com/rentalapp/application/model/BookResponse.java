@@ -14,11 +14,11 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class BookResponse {
     private int id;
-    private String book_name;
+    private String bookName;
     private String author;
     private String publisher;
     private int status;
-    private LocalDateTime arrival_data;
-    private LocalDateTime update_date;
-    private int delete_flg;
+    private LocalDateTime arrivalData;
+    private LocalDateTime updateDate;
+    private int deleteFlg;
 }
