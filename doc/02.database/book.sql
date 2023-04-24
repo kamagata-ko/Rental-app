@@ -5,6 +5,7 @@ CREATE TABLE "t_book" (
   "publisher" varchar(100),
   "status" integer NOT NULL DEFAULT (0),
   "arrival_date" timestamp NOT NULL DEFAULT (now()),
+  "register_date" timestamp NOT NULL DEFAULT (now()),
   "update_date" timestamp,
   "delete_flg" integer NOT NULL DEFAULT (0)
 );
