@@ -1,10 +1,12 @@
 CREATE TABLE "t_book" (
-  "id" char PRIMARY KEY,
-  "name" varchar NOT NULL,
-  "status" integer NOT NULL,
+  "id" serial PRIMARY KEY,
+  "book_name" varchar(100) NOT NULL,
+  "author" varchar(100),
+  "publisher" varchar(100),
+  "status" integer NOT NULL DEFAULT (0),
   "arrival_date" timestamp NOT NULL DEFAULT (now()),
   "update_date" timestamp,
-  "delete_flg" integer NOT NULL
+  "delete_flg" integer NOT NULL DEFAULT (0)
 );
 
 CREATE TABLE "t_customer" (
