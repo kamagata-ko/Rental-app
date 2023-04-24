@@ -8,8 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 顧客情報リポジトリ実装クラス.
@@ -49,13 +49,10 @@ public class CustomerRepositoryImpl implements CustomerRepository {
      */
     @Override
     public List<CustomerModel> selectAll(int limit, int offset, String sort) {
-        // 結果格納用のリストを作成。
-        List<CustomerModel> list = new ArrayList<CustomerModel>();
-        List<TCustomerModel> result = mapper.select(limit, offset, sort);
-        for (TCustomerModel tableModel : result) {
-            list.add(helper.toModel(tableModel));
-        }
-        return list;
+        return mapper.select(limit, offset, sort)
+                .stream()
+                .map(helper::toModel)
+                .collect(Collectors.toList());
     }
 
     @Override
