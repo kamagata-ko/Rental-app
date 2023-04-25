@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rentalapp.infrastructure.mapper.BookMapper">
+    <insert id="insertBook" parameterType="com.rentalapp.infrastructure.model.TBookModel" useGeneratedKeys="true"
+            keyProperty="id">
+        INSERT INTO
+        t_book
+        (
+        book_name
+        ,author
+        ,publisher
+        ,status
+        ,arrival_date
+        ,register_date
+        )
+        VALUES
+        (
+        #{bookName}
+        ,#{author}
+        ,#{publisher}
+        ,#{status}
+        ,#{arrivalData}
+        ,#{registerDate}
+        )
+    </insert>
+    <select id="selectOne" parameterType="int" resultType="com.rentalapp.infrastructure.model.TBookModel">
+        SELECT
+        *
+        FROM
+        t_book
+        WHERE
+        id = #{id}
+    </select>
+    <select id="select" resultType="com.rentalapp.infrastructure.model.TBookModel">
+        SELECT
+        *
+        FROM
+        t_book
+        <if test="sort != null and sort != ''">
+            order by ${sort}
+        </if>
+        <if test="limit != null">
+            limit #{limit}
+        </if>
+        <if test="offset != null">
+            Offset #{offset}
+        </if>
+    </select>
+    <select id="count" resultType="int">
+        SELECT
+        COUNT(*)
+        FROM
+        t_book
+    </select>
+    <update id="updateByPrimaryKeySelective">
+        UPDATE
+        <set>
+            <if test="bookName != null and bookName !=''">
+                book_name = #{bookName},
+            </if>
+            <if test="author != null and author !=''">
+                author = #{author},
+            </if>
+            <if test="publisher != null and publisher !=''">
+                publisher = #{publisher},
+            </if>
+            <if test="status != null and status !=''">
+                status = #{status},
+            </if>
+            <if test="arrivalData != null">
+                arrival_date = #{arrivalData},
+            </if>
+            update_date = #{updateDate}
+        </set>
+        WHERE
+        id = #{id}
+    </update>
+    <update id="deleteOne">
+        UPDATE
+        t_customer
+        SET
+        delete_flg = '1'
+        WHERE
+        id = #{id}
+    </update>
+</mapper>
