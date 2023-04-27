@@ -11,13 +11,13 @@ public interface BookMapper {
 
     int insertBook(TBookModel model);
 
-    TBookModel selectOne(int id);
+    TBookModel selectOne(Integer id);
 
-    List<TBookModel> select(@Param("limit") int limit, @Param("offset") int offset, @Param("sort") String sort);
+    List<TBookModel> select(@Param("limit") Integer limit, @Param("offset") Integer offset, @Param("sort") String sort);
 
     int count();
 
     int updateByPrimaryKeySelective(TBookModel model);
 
-    int deleteOne(int id);
+    int deleteOne(Integer id);
 }
