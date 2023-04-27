@@ -1,7 +1,6 @@
 package com.rentalapp.infrastructure.mapper;
 
 import com.rentalapp.infrastructure.model.TBookModel;
-import com.rentalapp.infrastructure.model.TCustomerModel;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -18,7 +17,7 @@ public interface BookMapper {
 
     int count();
 
-    int updateByPrimaryKeySelective(TCustomerModel model);
+    int updateByPrimaryKeySelective(TBookModel model);
 
     int deleteOne(int id);
 }
