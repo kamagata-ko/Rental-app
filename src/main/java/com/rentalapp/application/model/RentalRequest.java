@@ -5,17 +5,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class RentalRequest {
-    private Integer id;
-    private Integer customerId;
-    private Integer bookId;
-    private LocalDateTime rentalStartDate;
-    private LocalDateTime scheduledReturnDate;
-    private LocalDateTime returnCompletionDate;
+//    private Integer id;
+//    private Integer customerId;
+//    private Integer bookId;
+//    private LocalDateTime rentalStartDate;
+//    private LocalDateTime scheduledReturnDate;
+//    private LocalDateTime returnCompletionDate;
 }
