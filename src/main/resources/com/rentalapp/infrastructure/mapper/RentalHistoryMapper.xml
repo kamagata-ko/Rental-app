@@ -6,8 +6,7 @@
         INSERT INTO
         t_rental_history
         (
-        id
-        ,customer_id
+        customer_id
         ,book_id
         ,rental_start_date
         ,scheduled_return_date
@@ -15,8 +14,7 @@
         )
         VALUES
         (
-        #{id}
-        ,#{customerId}
+        #{customerId}
         ,#{bookId}
         ,#{rentalStartDate}
         ,#{scheduledReturnDate}
