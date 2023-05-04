@@ -30,19 +30,21 @@ public class RentalRepositoryImpl implements RentalRepository {
         // リクエスト内の本IDの数だけ履歴情報を作成しDBに登録する。
         for (Integer bookId : bookIds) {
             // 履歴情報作成・追加
-            TRentalHistoryModel model = new TRentalHistoryModel();
-            model.setCustomerId(customerId);
-            model.setBookId(bookId);
-            model.setRentalStartDate(now);
-            model.setScheduledReturnDate(now); // TODO 返却予定日を１週間後とかにする。（本テーブルに情報持たせてもいいかも）
+            TRentalHistoryModel rhm = TRentalHistoryModel.builder()
+                    .customerId(customerId)
+                    .bookId(bookId)
+                    .rentalStartDate(now)
+                    .scheduledReturnDate(now) // TODO 返却予定日を１週間後とかにする。（本テーブルに情報持たせてレンタル期間を可変にする。）
+                    .build();
 
-            rentalHistoryMapper.insert(model);
+            rentalHistoryMapper.insert(rhm);
 
-            // 本ステータスをレンタル中に変更
-            TBookModel bm = new TBookModel();
-            bm.setId(bookId);
-            bm.setStatus(STATUS_RENTAL);
-            bm.setUpdateDate(now);
+            // 対象本ステータスをレンタル中に変更
+            TBookModel bm = TBookModel.builder()
+                    .id(bookId)
+                    .status(STATUS_RENTAL)
+                    .updateDate(now)
+                    .build();
 
             bookMapper.updateByPrimaryKeySelective(bm);
         }
