@@ -4,6 +4,6 @@ import java.util.List;
 
 public record RentalRequest(
         Integer customerId,
-        List<Integer> bookId) {
+        List<Integer> bookIds) {
 
 }
