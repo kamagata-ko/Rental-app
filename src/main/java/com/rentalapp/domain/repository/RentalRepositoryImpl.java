@@ -29,12 +29,15 @@ public class RentalRepositoryImpl implements RentalRepository {
 
         // リクエスト内の本IDの数だけ履歴情報を作成しDBに登録する。
         for (Integer bookId : bookIds) {
+            // 対象の本のレンタル期間を取得
+            int rentalPeriod = 7; // TODO 本によってレンタル期間を可変にする。
+
             // 履歴情報作成・追加
             TRentalHistoryModel rhm = TRentalHistoryModel.builder()
                     .customerId(customerId)
                     .bookId(bookId)
                     .rentalStartDate(now)
-                    .scheduledReturnDate(now) // TODO 返却予定日を１週間後とかにする。（本テーブルに情報持たせてレンタル期間を可変にする。）
+                    .scheduledReturnDate(now.plusDays(rentalPeriod))
                     .build();
 
             rentalHistoryMapper.insert(rhm);
