@@ -10,7 +10,7 @@ public class RentalHelperImpl implements RentalHelper {
     public RentalInfo toRentalInfo(RentalRequest request) {
         return RentalInfo.builder()
                 .customerId(request.customerId())
-                .bookId(request.bookIds())
+                .bookIds(request.bookIds())
                 .build();
     }
 }
