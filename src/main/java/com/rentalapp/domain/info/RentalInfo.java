@@ -13,5 +13,5 @@ import java.util.List;
 @NoArgsConstructor
 public class RentalInfo {
     private Integer customerId;
-    private List<Integer> bookId;
+    private List<Integer> bookIds;
 }

@@ -23,7 +23,7 @@ public class RentalRepositoryImpl implements RentalRepository {
     public int doRental(RentalInfo info) {
         /* ローカル変数準備 */
         Integer customerId = info.getCustomerId(); // パラメータから顧客IDを取得。
-        List<Integer> bookIds = info.getBookId(); // パラメータから本IDを取得。
+        List<Integer> bookIds = info.getBookIds(); // パラメータから本IDを取得。
         LocalDateTime now = LocalDateTime.now(); // 現在時刻を取得。
         final int STATUS_RENTAL = 1; // レンタル中。
 
