@@ -21,6 +21,7 @@ CREATE TABLE "t_customer" (
   "delete_flg" integer NOT NULL DEFAULT (0)
 );
 
+/* 未実装 */
 CREATE TABLE "t_staff" (
   "id" char PRIMARY KEY,
   "name" varchar,
@@ -30,14 +31,15 @@ CREATE TABLE "t_staff" (
 );
 
 CREATE TABLE "t_rental_history" (
-  "id" char PRIMARY KEY,
-  "customer_id" int NOT NULL,
-  "book_id" char NOT NULL,
+  "id" serial PRIMARY KEY,
+  "customer_id" varchar(10) NOT NULL,
+  "book_id" varchar(10) NOT NULL,
   "rental_start_date" timestamp NOT NULL DEFAULT (now()),
   "scheduled_return_date" timestamp NOT NULL,
   "return_completion_date" timestamp
 );
 
+/* 未実装 */
 CREATE TABLE "t_kubunti" (
   "id" char PRIMARY KEY,
   "kubun_code" char NOT NULL,
