@@ -54,7 +54,7 @@
         t_book
     </select>
     <update id="updateByPrimaryKeySelective">
-        UPDATE
+        UPDATE t_book
         <set>
             <if test="bookName != null and bookName !=''">
                 book_name = #{bookName},
@@ -78,7 +78,7 @@
     </update>
     <update id="deleteOne">
         UPDATE
-        t_customer
+        t_book
         SET
         delete_flg = '1'
         WHERE
