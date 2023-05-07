@@ -12,7 +12,7 @@ CREATE TABLE "t_book" (
 
 CREATE TABLE "t_customer" (
   "id" serial PRIMARY KEY,
-  "password" varchar(10) NOT NULL,
+  "password" varchar(100) NOT NULL,
   "name" varchar(10) NOT NULL,
   "gender" integer CHECK (gender IN (1, 2, 3)),
   "birthday" date,

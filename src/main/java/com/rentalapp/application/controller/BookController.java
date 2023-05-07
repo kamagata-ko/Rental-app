@@ -39,7 +39,7 @@ public class BookController implements BookApi {
                 .collect(Collectors.toList());
         int count = service.count();
         return BooksResponse.builder()
-                .bookResponseList(list)
+                .books(list)
                 .count(count)
                 .build();
     }
