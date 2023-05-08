@@ -1,14 +1,14 @@
 package com.rentalapp.infrastructure.helper;
 
-import com.rentalapp.domain.model.RentalHistoryModel;
-import com.rentalapp.infrastructure.model.TRentalHistoryModel;
+import com.rentalapp.domain.model.RentalModel;
+import com.rentalapp.infrastructure.model.TRentalModel;
 import org.springframework.stereotype.Component;
 
 @Component
 public class TRentalHistoryHelperImpl implements TRentalHistoryHelper {
     @Override
-    public TRentalHistoryModel toTableModel(RentalHistoryModel model) {
-        return TRentalHistoryModel.builder()
+    public TRentalModel toTableModel(RentalModel model) {
+        return TRentalModel.builder()
                 .id(model.getId())
                 .customerId(model.getCustomerId())
                 .bookId(model.getBookId())
@@ -19,8 +19,8 @@ public class TRentalHistoryHelperImpl implements TRentalHistoryHelper {
     }
 
     @Override
-    public RentalHistoryModel toModel(TRentalHistoryModel model) {
-        return RentalHistoryModel.builder()
+    public RentalModel toModel(TRentalModel model) {
+        return RentalModel.builder()
                 .id(model.getId())
                 .customerId(model.getCustomerId())
                 .bookId(model.getBookId())

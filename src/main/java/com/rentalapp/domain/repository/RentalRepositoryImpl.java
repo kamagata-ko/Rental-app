@@ -5,7 +5,7 @@ import com.rentalapp.infrastructure.helper.TRentalHistoryHelperImpl;
 import com.rentalapp.infrastructure.mapper.BookMapper;
 import com.rentalapp.infrastructure.mapper.RentalHistoryMapper;
 import com.rentalapp.infrastructure.model.TBookModel;
-import com.rentalapp.infrastructure.model.TRentalHistoryModel;
+import com.rentalapp.infrastructure.model.TRentalModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -33,7 +33,7 @@ public class RentalRepositoryImpl implements RentalRepository {
             int rentalPeriod = 7; // TODO 本によってレンタル期間を可変にする。
 
             // 履歴情報作成・追加
-            TRentalHistoryModel rhm = TRentalHistoryModel.builder()
+            TRentalModel rhm = TRentalModel.builder()
                     .customerId(customerId)
                     .bookId(bookId)
                     .rentalStartDate(now)
