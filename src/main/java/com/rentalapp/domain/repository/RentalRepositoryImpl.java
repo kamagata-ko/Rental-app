@@ -3,7 +3,7 @@ package com.rentalapp.domain.repository;
 import com.rentalapp.domain.info.RentalInfo;
 import com.rentalapp.infrastructure.helper.TRentalHistoryHelperImpl;
 import com.rentalapp.infrastructure.mapper.BookMapper;
-import com.rentalapp.infrastructure.mapper.RentalHistoryMapper;
+import com.rentalapp.infrastructure.mapper.RentalMapper;
 import com.rentalapp.infrastructure.model.TBookModel;
 import com.rentalapp.infrastructure.model.TRentalModel;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +15,7 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 public class RentalRepositoryImpl implements RentalRepository {
-    private final RentalHistoryMapper rentalHistoryMapper;
+    private final RentalMapper rentalHistoryMapper;
     private final BookMapper bookMapper;
     private final TRentalHistoryHelperImpl helper;
 
