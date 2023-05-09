@@ -1,4 +1,4 @@
-package com.rentalapp.domain.model;
+package com.rentalapp.infrastructure.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class RentalHistoryModel {
+public class TRentalModel {
     private Integer id;
     private Integer customerId;
     private Integer bookId;

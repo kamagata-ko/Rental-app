@@ -1,10 +1,10 @@
 package com.rentalapp.infrastructure.helper;
 
-import com.rentalapp.domain.model.RentalHistoryModel;
-import com.rentalapp.infrastructure.model.TRentalHistoryModel;
+import com.rentalapp.domain.model.RentalModel;
+import com.rentalapp.infrastructure.model.TRentalModel;
 
 public interface TRentalHistoryHelper {
-    TRentalHistoryModel toTableModel(RentalHistoryModel model);
+    TRentalModel toTableModel(RentalModel model);
 
-    RentalHistoryModel toModel(TRentalHistoryModel model);
+    RentalModel toModel(TRentalModel model);
 }

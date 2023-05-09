@@ -30,7 +30,7 @@ CREATE TABLE "t_staff" (
   "koushin_date" timestamp
 );
 
-CREATE TABLE "t_rental_history" (
+CREATE TABLE "t_rental" (
   "id" serial PRIMARY KEY,
   "customer_id" varchar(10) NOT NULL,
   "book_id" varchar(10) NOT NULL,
@@ -46,6 +46,6 @@ CREATE TABLE "t_kubunti" (
   "kubun_name" varchar NOT NULL
 );
 
-ALTER TABLE "t_rental_history" ADD FOREIGN KEY ("customer_id") REFERENCES "t_customer" ("id");
+ALTER TABLE "t_rental" ADD FOREIGN KEY ("customer_id") REFERENCES "t_customer" ("id");
 
-ALTER TABLE "t_rental_history" ADD FOREIGN KEY ("book_id") REFERENCES "t_book" ("id");
+ALTER TABLE "t_rental" ADD FOREIGN KEY ("book_id") REFERENCES "t_book" ("id");

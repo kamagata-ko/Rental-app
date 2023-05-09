@@ -3,9 +3,9 @@ package com.rentalapp.domain.repository;
 import com.rentalapp.domain.info.RentalInfo;
 import com.rentalapp.infrastructure.helper.TRentalHistoryHelperImpl;
 import com.rentalapp.infrastructure.mapper.BookMapper;
-import com.rentalapp.infrastructure.mapper.RentalHistoryMapper;
+import com.rentalapp.infrastructure.mapper.RentalMapper;
 import com.rentalapp.infrastructure.model.TBookModel;
-import com.rentalapp.infrastructure.model.TRentalHistoryModel;
+import com.rentalapp.infrastructure.model.TRentalModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -15,7 +15,7 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 public class RentalRepositoryImpl implements RentalRepository {
-    private final RentalHistoryMapper rentalHistoryMapper;
+    private final RentalMapper rentalHistoryMapper;
     private final BookMapper bookMapper;
     private final TRentalHistoryHelperImpl helper;
 
@@ -28,29 +28,27 @@ public class RentalRepositoryImpl implements RentalRepository {
         final int STATUS_RENTAL = 1; // レンタル中。
 
         // リクエスト内の本IDの数だけ履歴情報を作成しDBに登録する。
-        for (Integer bookId : bookIds) {
-            // 対象の本のレンタル期間を取得
-            int rentalPeriod = 7; // TODO 本によってレンタル期間を可変にする。
+        bookIds.forEach(e -> {
+                    // 対象の本のレンタル期間を取得
+                    int rentalPeriod = 7; // TODO 本によってレンタル期間を可変にする。
 
-            // 履歴情報作成・追加
-            TRentalHistoryModel rhm = TRentalHistoryModel.builder()
-                    .customerId(customerId)
-                    .bookId(bookId)
-                    .rentalStartDate(now)
-                    .scheduledReturnDate(now.plusDays(rentalPeriod))
-                    .build();
+                    // 履歴情報作成・追加
+                    var rental = TRentalModel.builder()
+                            .customerId(customerId)
+                            .bookId(e)
+                            .rentalStartDate(now)
+                            .scheduledReturnDate(now.plusDays(rentalPeriod))
+                            .build();
+                    rentalHistoryMapper.insert(rental);
 
-            rentalHistoryMapper.insert(rhm);
-
-            // 対象本ステータスをレンタル中に変更
-            TBookModel bm = TBookModel.builder()
-                    .id(bookId)
-                    .status(STATUS_RENTAL)
-                    .updateDate(now)
-                    .build();
-
-            bookMapper.updateByPrimaryKeySelective(bm);
-        }
+                    // 対象本ステータスをレンタル中に変更
+                    var book = TBookModel.builder()
+                            .id(e)
+                            .status(STATUS_RENTAL)
+                            .updateDate(now).build();
+                    bookMapper.updateByPrimaryKeySelective(book);
+                }
+        );
 
         return 0;
     }
