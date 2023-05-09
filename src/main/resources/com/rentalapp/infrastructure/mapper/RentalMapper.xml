@@ -21,43 +21,4 @@
         ,#{returnCompletionDate}
         )
     </insert>
-    <select id="selectById" resultType="com.rentalapp.infrastructure.model.TRentalModel">
-        SELECT
-        *
-        FROM
-        t_rental
-        WHERE
-        <choose>
-            <when test="pattern == 1">
-                id = #{id}
-            </when>
-            <when test="pattern == 2">
-                customer_id = #{id}
-            </when>
-            <otherwise>
-                book_id = #{id}
-            </otherwise>
-        </choose>
-    </select>
-    <select id="selectAll" resultType="com.rentalapp.infrastructure.model.TRentalModel">
-        SELECT
-        *
-        FROM
-        t_rental
-        <if test="sort != null and sort != ''">
-            order by ${sort}
-        </if>
-        <if test="limit != null">
-            limit #{limit}
-        </if>
-        <if test="offset != null">
-            Offset #{offset}
-        </if>
-    </select>
-    <delete id="delete">
-        DELETE FROM
-        t_rental
-        WHERE
-        id = #{id}
-    </delete>
 </mapper>
