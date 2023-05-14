@@ -28,6 +28,8 @@ public class RentalRepositoryImpl implements RentalRepository {
         LocalDateTime now = LocalDateTime.now(); // 現在時刻を取得。
         final int STATUS_RENTAL = 1; // レンタル中。
 
+        if (customerId == 1) throw new DomainException("現在借りている本が１０冊以上のためこれ以上借りれません。"); // TODO サンプル。
+
         // リクエスト内の本IDの数だけ履歴情報を作成しDBに登録する。
         bookIds.forEach(e -> {
                     // 対象の本のレンタル期間を取得
