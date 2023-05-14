@@ -65,7 +65,7 @@
             <if test="publisher != null and publisher !=''">
                 publisher = #{publisher},
             </if>
-            <if test="status != null and status !=''">
+            <if test="status != null">
                 status = #{status},
             </if>
             <if test="arrivalData != null">

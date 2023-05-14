@@ -21,4 +21,21 @@
         ,#{returnCompletionDate}
         )
     </insert>
+    <update id="doReturn" parameterType="com.rentalapp.infrastructure.model.TRentalModel">
+        UPDATE
+        t_rental
+        SET
+        return_completion_date = #{returnCompletionDate}
+        WHERE
+        id = #{id}
+        AND return_completion_date IS NULL
+    </update>
+    <select id="select" resultType="com.rentalapp.infrastructure.model.TRentalModel">
+        SELECT
+        *
+        FROM
+        t_rental
+        WHERE
+        id = #{id}
+    </select>
 </mapper>

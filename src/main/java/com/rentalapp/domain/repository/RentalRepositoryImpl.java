@@ -10,12 +10,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
 public class RentalRepositoryImpl implements RentalRepository {
-    private final RentalMapper rentalHistoryMapper;
+    private final RentalMapper rentalMapper;
     private final BookMapper bookMapper;
     private final TRentalHistoryHelperImpl helper;
 
@@ -39,7 +40,7 @@ public class RentalRepositoryImpl implements RentalRepository {
                             .rentalStartDate(now)
                             .scheduledReturnDate(now.plusDays(rentalPeriod))
                             .build();
-                    rentalHistoryMapper.insert(rental);
+                    rentalMapper.insert(rental);
 
                     // 対象本ステータスをレンタル中に変更
                     var book = TBookModel.builder()
@@ -51,5 +52,41 @@ public class RentalRepositoryImpl implements RentalRepository {
         );
 
         return 0;
+    }
+
+    @Override
+    public List<String> doReturn(RentalInfo info) {
+        List<Integer> rentalId = info.getRentalId();
+        List<String> messageList = new ArrayList<>(); // 返却メッセージ用リスト
+        LocalDateTime now = LocalDateTime.now();
+        final int STATUS_IN_STOCK = 0; // 在庫あり。
+
+        // リクエスト内のレンタルIDの数だけ以下を実行する。
+        rentalId.forEach(e -> {
+            /* レンタルテーブル更新 */
+            var retunModel = TRentalModel.builder()
+                    .id(e)
+                    .returnCompletionDate(now)
+                    .build();
+            int returnNum = rentalMapper.doReturn(retunModel);
+
+            if (returnNum > 0) {
+                /* 本テーブル更新 */
+                Integer bookId = rentalMapper.select(e).getBookId(); // 対象レンタル情報に紐づく本IDを取得する
+                var book = TBookModel.builder()
+                        .id(bookId)
+                        .status(STATUS_IN_STOCK)
+                        .updateDate(now)
+                        .build();
+                bookMapper.updateByPrimaryKeySelective(book);
+
+                // 返却完了メッセージをメッセージに追加
+                messageList.add("返却処理が完了しました。");
+            } else {
+                // レンタルテーブルの更新件数が０件の場合、レンタル処理を行わない旨をメッセージに追加
+                messageList.add("返却済み、または対象レンタル情報がありません。対象レンタルID【" + e + "】");
+            }
+        });
+        return messageList;
     }
 }

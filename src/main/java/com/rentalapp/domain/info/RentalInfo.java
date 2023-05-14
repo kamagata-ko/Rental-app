@@ -12,6 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RentalInfo {
+    private List<Integer> rentalId;
     private Integer customerId;
     private List<Integer> bookIds;
 }

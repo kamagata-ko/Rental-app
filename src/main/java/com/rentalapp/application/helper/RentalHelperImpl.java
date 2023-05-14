@@ -1,6 +1,7 @@
 package com.rentalapp.application.helper;
 
 import com.rentalapp.application.model.RentalRequest;
+import com.rentalapp.application.model.ReturnRequest;
 import com.rentalapp.domain.info.RentalInfo;
 import org.springframework.stereotype.Component;
 
@@ -13,4 +14,12 @@ public class RentalHelperImpl implements RentalHelper {
                 .bookIds(request.bookIds())
                 .build();
     }
+
+    @Override
+    public RentalInfo toRentalInfo(ReturnRequest request) {
+        return RentalInfo.builder()
+                .rentalId(request.rentalId())
+                .build();
+    }
+
 }
