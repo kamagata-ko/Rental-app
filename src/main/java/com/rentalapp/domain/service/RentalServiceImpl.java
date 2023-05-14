@@ -14,4 +14,9 @@ public class RentalServiceImpl implements RentalService {
     public int doRental(RentalInfo info) {
         return repository.doRental(info);
     }
+
+    @Override
+    public void doReturn(RentalInfo info) {
+        repository.doReturn(info);
+    }
 }

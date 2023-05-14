@@ -1,6 +1,7 @@
 package com.rentalapp.domain.repository;
 
 import com.rentalapp.domain.info.RentalInfo;
+import com.rentalapp.exception.DomainException;
 import com.rentalapp.infrastructure.helper.TRentalHistoryHelperImpl;
 import com.rentalapp.infrastructure.mapper.BookMapper;
 import com.rentalapp.infrastructure.mapper.RentalMapper;
@@ -15,7 +16,7 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 public class RentalRepositoryImpl implements RentalRepository {
-    private final RentalMapper rentalHistoryMapper;
+    private final RentalMapper rentalMapper;
     private final BookMapper bookMapper;
     private final TRentalHistoryHelperImpl helper;
 
@@ -26,6 +27,8 @@ public class RentalRepositoryImpl implements RentalRepository {
         List<Integer> bookIds = info.getBookIds(); // パラメータから本IDを取得。
         LocalDateTime now = LocalDateTime.now(); // 現在時刻を取得。
         final int STATUS_RENTAL = 1; // レンタル中。
+
+        if (customerId == 1) throw new DomainException("現在借りている本が１０冊以上のためこれ以上借りれません。"); // TODO サンプル。
 
         // リクエスト内の本IDの数だけ履歴情報を作成しDBに登録する。
         bookIds.forEach(e -> {
@@ -39,7 +42,7 @@ public class RentalRepositoryImpl implements RentalRepository {
                             .rentalStartDate(now)
                             .scheduledReturnDate(now.plusDays(rentalPeriod))
                             .build();
-                    rentalHistoryMapper.insert(rental);
+                    rentalMapper.insert(rental);
 
                     // 対象本ステータスをレンタル中に変更
                     var book = TBookModel.builder()
@@ -51,5 +54,31 @@ public class RentalRepositoryImpl implements RentalRepository {
         );
 
         return 0;
+    }
+
+    @Override
+    public void doReturn(RentalInfo info) {
+        List<Integer> rentalId = info.getRentalId();
+        LocalDateTime now = LocalDateTime.now();
+        final int STATUS_IN_STOCK = 0; // 在庫あり。
+
+        // リクエスト内のレンタルIDの数だけ以下を実行する。
+        rentalId.forEach(e -> {
+            /* レンタルテーブル更新 */
+            var model = TRentalModel.builder()
+                    .id(e)
+                    .returnCompletionDate(now)
+                    .build();
+            rentalMapper.doReturn(model);
+
+            // 本テーブル更新
+            Integer bookId = rentalMapper.select(e).getBookId(); // 対象レンタル情報に紐づく本IDを取得する
+            var book = TBookModel.builder()
+                    .id(bookId)
+                    .status(STATUS_IN_STOCK)
+                    .updateDate(now)
+                    .build();
+            bookMapper.updateByPrimaryKeySelective(book);
+        });
     }
 }
