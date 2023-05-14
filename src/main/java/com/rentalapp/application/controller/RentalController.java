@@ -9,8 +9,6 @@ import com.rentalapp.domain.service.RentalService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
 @RequiredArgsConstructor
 public class RentalController implements RentalApi {
@@ -24,8 +22,8 @@ public class RentalController implements RentalApi {
     }
 
     @Override
-    public List<String> doReturn(ReturnRequest request) {
+    public void doReturn(ReturnRequest request) {
         RentalInfo rentalInfo = helper.toRentalInfo(request);
-        return service.doReturn(rentalInfo);
+        service.doReturn(rentalInfo);
     }
 }

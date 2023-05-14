@@ -1,6 +1,7 @@
 package com.rentalapp.domain.repository;
 
 import com.rentalapp.domain.info.RentalInfo;
+import com.rentalapp.exception.DomainException;
 import com.rentalapp.infrastructure.helper.TRentalHistoryHelperImpl;
 import com.rentalapp.infrastructure.mapper.BookMapper;
 import com.rentalapp.infrastructure.mapper.RentalMapper;
@@ -10,7 +11,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -55,38 +55,28 @@ public class RentalRepositoryImpl implements RentalRepository {
     }
 
     @Override
-    public List<String> doReturn(RentalInfo info) {
+    public void doReturn(RentalInfo info) {
         List<Integer> rentalId = info.getRentalId();
-        List<String> messageList = new ArrayList<>(); // 返却メッセージ用リスト
         LocalDateTime now = LocalDateTime.now();
         final int STATUS_IN_STOCK = 0; // 在庫あり。
 
         // リクエスト内のレンタルIDの数だけ以下を実行する。
         rentalId.forEach(e -> {
             /* レンタルテーブル更新 */
-            var retunModel = TRentalModel.builder()
+            var model = TRentalModel.builder()
                     .id(e)
                     .returnCompletionDate(now)
                     .build();
-            int returnNum = rentalMapper.doReturn(retunModel);
+            rentalMapper.doReturn(model);
 
-            if (returnNum > 0) {
-                /* 本テーブル更新 */
-                Integer bookId = rentalMapper.select(e).getBookId(); // 対象レンタル情報に紐づく本IDを取得する
-                var book = TBookModel.builder()
-                        .id(bookId)
-                        .status(STATUS_IN_STOCK)
-                        .updateDate(now)
-                        .build();
-                bookMapper.updateByPrimaryKeySelective(book);
-
-                // 返却完了メッセージをメッセージに追加
-                messageList.add("返却処理が完了しました。");
-            } else {
-                // レンタルテーブルの更新件数が０件の場合、レンタル処理を行わない旨をメッセージに追加
-                messageList.add("返却済み、または対象レンタル情報がありません。対象レンタルID【" + e + "】");
-            }
+            // 本テーブル更新
+            Integer bookId = rentalMapper.select(e).getBookId(); // 対象レンタル情報に紐づく本IDを取得する
+            var book = TBookModel.builder()
+                    .id(bookId)
+                    .status(STATUS_IN_STOCK)
+                    .updateDate(now)
+                    .build();
+            bookMapper.updateByPrimaryKeySelective(book);
         });
-        return messageList;
     }
 }

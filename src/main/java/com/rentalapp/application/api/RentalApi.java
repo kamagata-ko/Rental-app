@@ -2,12 +2,8 @@ package com.rentalapp.application.api;
 
 import com.rentalapp.application.model.RentalRequest;
 import com.rentalapp.application.model.ReturnRequest;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.List;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("rentals")
 public interface RentalApi {
@@ -15,5 +11,6 @@ public interface RentalApi {
     int doRental(@RequestBody RentalRequest request);
 
     @PutMapping
-    List<String> doReturn(@RequestBody ReturnRequest request);
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void doReturn(@RequestBody ReturnRequest request);
 }

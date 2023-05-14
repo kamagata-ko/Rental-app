@@ -5,8 +5,6 @@ import com.rentalapp.domain.repository.RentalRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 @RequiredArgsConstructor
 public class RentalServiceImpl implements RentalService {
@@ -18,7 +16,7 @@ public class RentalServiceImpl implements RentalService {
     }
 
     @Override
-    public List<String> doReturn(RentalInfo info) {
-        return repository.doReturn(info);
+    public void doReturn(RentalInfo info) {
+        repository.doReturn(info);
     }
 }
