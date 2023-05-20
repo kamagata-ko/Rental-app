@@ -3,6 +3,7 @@ package com.rentalapp.application.controller;
 import com.rentalapp.application.api.RentalApi;
 import com.rentalapp.application.helper.RentalHelper;
 import com.rentalapp.application.model.RentalRequest;
+import com.rentalapp.application.model.RentalResponse;
 import com.rentalapp.application.model.ReturnRequest;
 import com.rentalapp.domain.info.RentalInfo;
 import com.rentalapp.domain.service.RentalService;
@@ -25,5 +26,10 @@ public class RentalController implements RentalApi {
     public void doReturn(ReturnRequest request) {
         RentalInfo rentalInfo = helper.toRentalInfo(request);
         service.doReturn(rentalInfo);
+    }
+
+    @Override
+    public RentalResponse fetchRentals(Integer customerId) {
+        return helper.toResponse(service.fetchRentingBooks(customerId));
     }
 }

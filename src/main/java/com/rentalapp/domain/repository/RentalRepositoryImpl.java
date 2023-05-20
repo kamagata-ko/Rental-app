@@ -1,7 +1,9 @@
 package com.rentalapp.domain.repository;
 
 import com.rentalapp.domain.info.RentalInfo;
+import com.rentalapp.domain.model.RentalBooksModel;
 import com.rentalapp.exception.DomainException;
+import com.rentalapp.infrastructure.helper.TBookModelHelperImpl;
 import com.rentalapp.infrastructure.helper.TRentalHistoryHelperImpl;
 import com.rentalapp.infrastructure.mapper.BookMapper;
 import com.rentalapp.infrastructure.mapper.RentalMapper;
@@ -11,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -19,6 +22,7 @@ public class RentalRepositoryImpl implements RentalRepository {
     private final RentalMapper rentalMapper;
     private final BookMapper bookMapper;
     private final TRentalHistoryHelperImpl helper;
+    private final TBookModelHelperImpl bookModelHelper;
 
     @Override
     public int doRental(RentalInfo info) {
@@ -80,5 +84,23 @@ public class RentalRepositoryImpl implements RentalRepository {
                     .build();
             bookMapper.updateByPrimaryKeySelective(book);
         });
+    }
+
+    @Override
+    public List<RentalBooksModel> fetchRentingBooks(Integer customerId) {
+        // 顧客IDからレンタル情報を取得
+        List<TRentalModel> tRentalModels = rentalMapper.selectByCustomerId(Integer.toString(customerId));
+
+        // 取得したレンタル情報内の本IDから本の情報を取得しレンタルしている本の情報を取得
+        List<RentalBooksModel> rbModels = new ArrayList<>();
+        tRentalModels.forEach(e -> {
+            RentalBooksModel rbModel = RentalBooksModel.builder()
+                    .rentalId(e.getId())
+                    .bookModel(bookModelHelper.toModel(bookMapper.selectOne(e.getBookId())))
+                    .build();
+
+            rbModels.add(rbModel);
+        });
+        return rbModels;
     }
 }
