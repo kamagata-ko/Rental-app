@@ -23,6 +23,8 @@ public class CustomerHelperImpl implements CustomerHelper {
 				.name(req.name())
 				.gender(req.gender())
 				.birthday(req.birthday())
+				.mailAddress(req.mailAddress())
+				.telephoneNumber(req.telephoneNumber())
 				.build();
 	}
 
@@ -37,6 +39,8 @@ public class CustomerHelperImpl implements CustomerHelper {
 				.name(req.name())
 				.gender(req.gender())
 				.birthday(req.birthday())
+				.mailAddress(req.mailAddress())
+				.telephoneNumber(req.telephoneNumber())
 				.registerDate(req.registerDate())
 				.deleteFlg(req.deleteFlg())
 				.build();
@@ -53,6 +57,8 @@ public class CustomerHelperImpl implements CustomerHelper {
 				.name(model.getName())
 				.gender(model.getGender())
 				.birthday(model.getBirthday())
+				.mailAddress(model.getMailAddress())
+				.telephoneNumber(model.getTelephoneNumber())
 				.registerDate(model.getRegisterDate())
 				.updateDate(model.getUpdateDate())
 				.build();

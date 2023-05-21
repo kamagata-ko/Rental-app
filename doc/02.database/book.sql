@@ -16,6 +16,8 @@ CREATE TABLE "t_customer" (
   "name" varchar(10) NOT NULL,
   "gender" integer CHECK (gender IN (1, 2, 3)),
   "birthday" date,
+  "mail_address" varchar(60) NOT NULL,
+  "telephone_number" varchar(60) NOT NULL,
   "register_date" timestamp NOT NULL DEFAULT (now()),
   "update_date" timestamp,
   "delete_flg" integer NOT NULL DEFAULT (0)

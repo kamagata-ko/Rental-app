@@ -13,5 +13,10 @@ public record CustomerCreateRequest(
         /* 性別 */
         int gender,
         /* 生年月日 */
-        LocalDate birthday) {
+        LocalDate birthday,
+        /* メールアドレス */
+        String mailAddress,
+        /* 電話番号 */
+        String telephoneNumber
+) {
 }

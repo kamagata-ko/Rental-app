@@ -11,6 +11,8 @@
         ,name
         ,gender
         ,birthday
+        ,mail_address
+        ,telephone_number
         ,register_date
         ,update_date
         )
@@ -20,6 +22,8 @@
         ,#{name}
         ,#{gender}
         ,#{birthday}
+        ,#{mailAddress}
+        ,#{telephoneNumber}
         ,#{registerDate}
         ,#{updateDate}
         )
@@ -56,6 +60,12 @@
             </if>
             <if test="birthday != null">
                 birthday = #{birthday},
+            </if>
+            <if test="mailAddress != null and mailAddress != ''">
+                mail_address = #{mailAddress},
+            </if>
+            <if test="telephoneNumber != null and telephoneNumber != ''">
+                telephone_number = #{telephoneNumber},
             </if>
             update_date = #{updateDate}
         </set>
