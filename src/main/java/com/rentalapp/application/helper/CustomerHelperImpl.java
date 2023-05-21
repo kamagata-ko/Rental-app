@@ -39,6 +39,8 @@ public class CustomerHelperImpl implements CustomerHelper {
 				.name(req.name())
 				.gender(req.gender())
 				.birthday(req.birthday())
+				.mailAddress(req.mailAddress())
+				.telephoneNumber(req.telephoneNumber())
 				.registerDate(req.registerDate())
 				.deleteFlg(req.deleteFlg())
 				.build();
