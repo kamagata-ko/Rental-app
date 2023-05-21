@@ -22,6 +22,8 @@ public class TCustomerModelHelperImpl implements TCustomerModelHelper {
 				.name(model.getName())
 				.gender(model.getGender())
 				.birthday(model.getBirthday())
+				.mailAddress(model.getMailAddress())
+				.telephoneNumber(model.getTelephoneNumber())
 				.registerDate(model.getRegisterDate())
 				.updateDate(model.getUpdateDate())
 				.deleteFlg(model.getDeleteFlg())
