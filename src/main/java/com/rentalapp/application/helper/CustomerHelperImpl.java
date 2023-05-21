@@ -55,6 +55,8 @@ public class CustomerHelperImpl implements CustomerHelper {
 				.name(model.getName())
 				.gender(model.getGender())
 				.birthday(model.getBirthday())
+				.mailAddress(model.getMailAddress())
+				.telephoneNumber(model.getTelephoneNumber())
 				.registerDate(model.getRegisterDate())
 				.updateDate(model.getUpdateDate())
 				.build();
